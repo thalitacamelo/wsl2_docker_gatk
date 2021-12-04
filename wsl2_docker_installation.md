@@ -1,4 +1,4 @@
-# NGS_WSL2
+# WSL2
 Here I show the commands I executed setting up Windows Subsystem for Linux 2 (WLS2). I've followed the instructions on [Best practices for setting up a WSL development environment](https://docs.microsoft.com/en-us/windows/wsl/setup/environment), where you can find recommended tutorials for every step.
 
 ## Prerequisites to install WSL2 
