@@ -58,7 +58,7 @@ To open your WSL project in Windows File Explorer, enter the following command o
 ```bash
 explorer.exe .
 ```
-The default starting directory for the Ubuntu WSL Terminal is `/mnt/c/Users/<UserName>`, it is better to change for the Linux file system. All you have to do is open the Windows Terminal settings, select Ubuntu 20.04 LTS, and change the default starting directory for `\\wsl.localhost\Ubuntu-20.04\home\<UserName>` (replacing <UserName> with your user name)
+The default starting directory for the Ubuntu WSL Terminal is `/mnt/c/Users/UserName`, it is better to change for the Linux file system. All you have to do is open the Windows Terminal settings, select Ubuntu 20.04 LTS, and change the default starting directory for `\\wsl.localhost\Ubuntu-20.04\home\UserName` (replacing UserName with your user name)
 If you need to access the Windows file directory from your WSL distribution command line, the directory would be accessed using `/mnt/c/Users/username`.
 
 ## VSCode installation
