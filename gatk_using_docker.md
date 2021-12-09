@@ -30,6 +30,7 @@ Open a new terminal start a container of the FastQC image, specifying the filesy
 docker run -v ~/GATK/DesafioMendelics:/data -it biocontainers/fastqc:v0.11.9_cv8 bash
 ```
 Run FastQC
+outputs: amostra-lbb_R1_fastqc.html, amostra-lbb_R2_fastqc.html, amostra-lbb_R1_fastqc.zip, amostra-lbb_R2_fastqc.zip
 ```bash
 fastqc -t 4 -o amostra-lbb_R1.fq amostra-lbb_R2.fq
 ```
@@ -58,7 +59,8 @@ Output: unaligned_read_pairs.bam
 ```
 
 ### Create an index for VCF files. 
-Outputs: dbSNP_chr22_corrected.vcf.idx, pequeno-gabarito.vcf.idx. An index allows querying features by a genomic interval. The -java-options -Xmx6G argument specify memory allocation
+An index allows querying features by a genomic interval. The -java-options -Xmx6G argument specify memory allocation.
+Outputs: dbSNP_chr22_corrected.vcf.idx, pequeno-gabarito.vcf.idx.
 ```bash
 ../gatk --java-options -Xmx6G IndexFeatureFile -I dbSNP_chr22_corrected.vcf
 ../gatk --java-options -Xmx6G IndexFeatureFile -I pequeno-gabarito.vcf
@@ -85,19 +87,19 @@ Outputs: aligned_reads.bam and aligned_reads.bam.sbi
 
 ### Mark Duplicate reads. 
 Sequencing error propagate in duplicates, flagging them mitigates duplication artifacts. 
-Outputs: marked_dup_metrics.txt, marked_duplicates.bam, marked_duplicates.bam.bai, marked_duplicates.bam.sbi.
+Outputs: marked_dup_metrics.txt, marked_duplicates.bam, marked_duplicates.bam.bai, marked_duplicates.bam.sbi
 ```bash
 ../gatk --java-options -Xmx6G MarkDuplicatesSpark -I aligned_reads.bam -O marked_duplicates.bam -M marked_dup_metrics.txt
 ```
 
 ### Many GATK tools require at least one read group tag in BAM files. 
-Output: marked_duplicates_rg.bam.
+Output: marked_duplicates_rg.bam
 ```bash
 ../gatk --java-options -Xmx6G AddOrReplaceReadGroups -I marked_duplicates.bam -O marked_duplicates_rg.bam -LB AMOSTRA-LBB -PL ILLUMINA -PU AMOSTRA-LBB -SM AMOSTRA-LBB
 ```
 
 ### Base Quality Score Recalibration (Create table). 
-Output:recal_data.table
+Output: recal_data.table
 ```bash
 ../gatk --java-options -Xmx6G BaseRecalibrator -I marked_duplicates_rg.bam -R grch38.chr22.fasta --known-sites dbSNP_chr22_corrected.vcf -O recal_data.table
 ```
@@ -137,12 +139,14 @@ cd funcotator_dataSources.v1.7.20200521g
 ```bash
 tar -zxf gnomAD_exome.tar.gz
 ```
-- Execute Funcotator annotation. Output: variants_annotation.vcf
+- Execute Funcotator annotation. 
+Output: variants_annotation.vcf
 ```bash
 ../gatk --java-options -Xmx6G Funcotator -V variants_filtered.vcf -R grch38.chr22.fasta -O variants_annotation --output-file-format VCF --data-sources-path funcotator_dataSources.v1.7.20200521g --ref-version hg38
 ```
 
 ## Collect summary and per-sample metrics about variant calls in a VCF file.
+outputs: summary_variants.variant_calling_detail_metrics, summary_variants.variant_calling_summary_metrics
 ```bash
 ../gatk --java-options -Xmx6G CollectVariantCallingMetrics -I variants_filtered.vcf --DBSNP dbSNP_chr22_corrected.vcf -O summary_variants
 ```
