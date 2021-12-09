@@ -7,7 +7,7 @@ docker pull broadinstitute/gatk:latest
 docker pull biocontainers/samtools:v1.9-4-deb_cv1
 ```
 ```
-docker pull biocontainers/bcftools/gatk:v1.9-1-deb_cv1
+docker pull biocontainers/fastqc:v0.11.9_cv8
 ```
 
 # Files preparation
