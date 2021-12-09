@@ -9,10 +9,6 @@ I am following the main steps for germline single-sample data steps recommended 
 
 ![gatk](https://drive.google.com/uc?export=view&id=15le0E7qlkpycOdwpdPcnrRZXFDbiOZoT)
 
-First we have to install docker.
+First we have to install docker -> [wsl2_docker_installation](wsl2_docker_installation.md)
 
-[wsl2_docker_installation](wsl2_docker_installation.md)
-
-Now we are ready to pull the images and start analyzing data.
-
-[gatk_using_docker](gatk_using_docker.md)
+Now we are ready to pull the images and start analyzing data -> [gatk_using_docker](gatk_using_docker.md)
