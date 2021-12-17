@@ -114,7 +114,7 @@ Outputs: analysis_ready_reads.bai, analysis_ready_reads.bam
 Use the dbSNP and capture files to improve quality of the analysis. 
 Outputs: variants.vcf, variants.vcf.idx.
 ```bash
-../gatk --java-options -Xmx6G HaplotypeCaller -I analysis_ready_reads.bam -R grch38.chr22.fasta --dbsnp dbSNP_chr22_corrected.vcf -L coverage.bed -O variants.vcf
+../gatk --java-options -Xmx6G HaplotypeCaller -I analysis_ready_reads.bam -R grch38.chr22.fasta --dbsnp dbSNP_chr22_corrected.vcf -L coverage.bed -ip 100 -O variants.vcf
 ```
 
 ### Apply tranche filtering to VCF based on scores. 
