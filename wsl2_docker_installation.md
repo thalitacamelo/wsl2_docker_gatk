@@ -85,6 +85,7 @@ git config --global user.name "Your Name"
 git config --global user.email "youremail@domain.com"
 ```
 If you need to edit your Git config, you can do so with a built-in text editor like nano: `nano ~/.gitconfig`.
+
 5. To set up GCM Core for use with a WSL distribution, enter this command:
 ```
 git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec/git-core/git-credential-manager-core.exe"
