@@ -95,6 +95,7 @@ git config --global credential.helper "/mnt/c/Program\ Files/Git/mingw64/libexec
 ssh-keygen -t ed25519 -C "your_email@domain.com"
 ```
 When you're prompted to "Enter a file in which to save the key," press Enter. At the prompt, you can type a secure passphrase and press enter. Or just press enter for no passphrase.
+
 7. Enter `cd ~/.ssh`. Then, enter `cat id_ed25519.pub`. Copy your key (from the "ssh-ed25519" to the e-mail).
 On your browser, go to `github.com/settings/ssh/new` and paste your key on the key field, don't add any newlines or whitespace. Type a title and press "add SSH key".
 
